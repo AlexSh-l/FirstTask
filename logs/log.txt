@@ -1,0 +1,8 @@
+2021-10-01 03:51:18 [main] [main] [13] INFO  Main - [-12, 22, -32, 25, 78, 9]
+2021-10-01 03:51:18 [main] [main] [16] INFO  Main - -32
+2021-10-01 03:51:18 [main] [main] [19] INFO  Main - 78
+2021-10-01 03:51:18 [main] [main] [22] INFO  Main - 15.0
+2021-10-01 03:51:18 [main] [main] [25] INFO  Main - [12, 22, 32, 25, 78, 9]
+2021-10-01 03:51:18 [main] [main] [28] INFO  Main - 178
+2021-10-01 03:51:18 [main] [main] [31] INFO  Main - 6
+2021-10-01 03:51:18 [main] [main] [34] INFO  Main - 0

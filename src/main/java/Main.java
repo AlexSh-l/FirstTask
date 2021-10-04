@@ -1,37 +1,65 @@
-import entity.NumbersArray;
+import com.alex.entity.NumbersArray;
+import com.alex.exceptions.ArrayIndexException;
+import com.alex.filereader.NumbersReader;
+import com.alex.service.implementation.*;
+import com.alex.sorts.ArraySorter;
+import com.alex.validator.Validation;
 import org.apache.logging.log4j.LogManager;
-import service.*;
 import org.apache.logging.log4j.Logger;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
     private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
+        NumbersReader numbersReader = new NumbersReader();
+        List<String> numbersRead = numbersReader.readNumbers();
+        Validation validation = new Validation();
+        int[] numbersList = validation.validateArray(numbersRead);
         NumbersArray numbersArray = new NumbersArray();
-        var array = numbersArray.numbersArrayNewInstance(-12,22,-32,25,78,9);
-        logger.info(numbersArray.arrayToString());
-        var minimumValueExtractor = new MinimumValueExtractor();
-        var minimumValue = minimumValueExtractor.getMinimumValue(array);
+        int[] array = numbersArray.numbersArrayNewInstance(numbersList);
+        logger.info(numbersArray.toString());
+        ArrayServices arrayServices = new ArrayServices();
+        int minimumValue = arrayServices.getMinimumValue(array);
         logger.info(minimumValue);
-        var maximumValueExtractor = new MaximumValueExtractor();
-        var maximumValue = maximumValueExtractor.getMaximumValue(array);
+        int maximumValue = arrayServices.getMaximumValue(array);
         logger.info(maximumValue);
-        var averageValueCalculator = new AverageValueCalculator();
-        var averageValue = averageValueCalculator.getAverageValue(array);
+        float averageValue = arrayServices.getAverageValue(array);
         logger.info(averageValue);
-        var negativeValueInverter = new NegativeValueInverter();
-        negativeValueInverter.invertNegativeValues(array);
-        logger.info(numbersArray.arrayToString());
-        var summaryCalculator = new SummaryCalculator();
-        var summary = summaryCalculator.getSummary(array);
+        int[] invertedArray = arrayServices.invertNegativeValues(array);
+        logger.info(Arrays.toString(invertedArray));
+        int summary = arrayServices.getSummary(array);
         logger.info(summary);
-        var positiveValuesCounter = new PositiveValuesCounter();
-        var numberOfPositives = positiveValuesCounter.countPositives(array);
+        int numberOfPositives = arrayServices.countPositives(array);
         logger.info(numberOfPositives);
-        var negativeValuesCounter = new NegativeValuesCounter();
-        var numberOfNegatives = negativeValuesCounter.countNegatives(array);
+        int numberOfNegatives = arrayServices.countNegatives(array);
         logger.info(numberOfNegatives);
+        ArraySorter arraySorter = new ArraySorter();
+        int[] bubbleArray = Arrays.copyOf(array,array.length);
+        int[] selectionArray = Arrays.copyOf(array,array.length);
+        int[] insertionArray = Arrays.copyOf(array,array.length);
+        arraySorter.bubbleSort(bubbleArray);
+        logger.info(Arrays.toString(bubbleArray));
+        arraySorter.selectionSort(selectionArray);
+        logger.info(Arrays.toString(selectionArray));
+        arraySorter.insertionSort(insertionArray);
+        logger.info(Arrays.toString(insertionArray));
+        try {
+            int ninthElement = numbersArray.getElementById(9);
+            logger.info(ninthElement);
+        }
+        catch(ArrayIndexException e){
+            logger.error(e.getMessage());
+        }
+        try {
+            int twentiethElement = numbersArray.getElementById(20);
+            logger.info(twentiethElement);
+        }
+        catch(ArrayIndexException e){
+            logger.error(e.getMessage());
+        }
     }
 
 }

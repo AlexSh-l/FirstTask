@@ -20,7 +20,7 @@ public class Validation {
         ArrayList<Integer> list = new ArrayList<>();
         int length = 0;
         try {
-            Pattern pattern = Pattern.compile(Constants.numbersExpression);
+            Pattern pattern = Pattern.compile(Constants.NUMBERS_EXPRESSION);
             Matcher matcher;
             for (String line : fileText) {
                 matcher = pattern.matcher(line);

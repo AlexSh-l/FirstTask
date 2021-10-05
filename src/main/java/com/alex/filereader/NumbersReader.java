@@ -17,7 +17,7 @@ public class NumbersReader {
 
     public List<String> readNumbers(){
         List<String> list = new ArrayList<>();
-        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(Constants.filePath))) {
+        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(Constants.FILE_PATH))) {
             list = bufferedReader.lines().collect(Collectors.toList());
 
         } catch (IOException e) {

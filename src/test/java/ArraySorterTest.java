@@ -1,5 +1,5 @@
-import com.alex.entity.NumbersArray;
-import com.alex.sorts.ArraySorter;
+import com.alex.firsttask.entities.NumbersArray;
+import com.alex.firsttask.sorts.ArraySorter;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

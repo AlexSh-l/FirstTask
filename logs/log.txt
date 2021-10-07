@@ -1,13 +1,13 @@
-2021-10-04 23:32:27 [main] [main] [23] INFO  Main - [-12, 22, -32, 25, 78, 9, 3, 4, -5, 67, -898]
-2021-10-04 23:32:27 [main] [main] [26] INFO  Main - -898
-2021-10-04 23:32:27 [main] [main] [28] INFO  Main - 78
-2021-10-04 23:32:27 [main] [main] [30] INFO  Main - -67.181816
-2021-10-04 23:32:27 [main] [main] [32] INFO  Main - [12, 22, 32, 25, 78, 9, 3, 4, 5, 67, 898]
-2021-10-04 23:32:27 [main] [main] [34] INFO  Main - -739
-2021-10-04 23:32:27 [main] [main] [36] INFO  Main - 7
-2021-10-04 23:32:27 [main] [main] [38] INFO  Main - 4
-2021-10-04 23:32:27 [main] [main] [44] INFO  Main - [-898, -32, -12, -5, 3, 4, 9, 22, 25, 67, 78]
-2021-10-04 23:32:27 [main] [main] [46] INFO  Main - [-898, -32, -12, -5, 3, 4, 9, 22, 25, 67, 78]
-2021-10-04 23:32:27 [main] [main] [48] INFO  Main - [-898, -32, -12, -5, 3, 4, 9, 22, 25, 67, 78]
-2021-10-04 23:32:27 [main] [main] [51] INFO  Main - 67
-2021-10-04 23:32:27 [main] [main] [61] ERROR Main - Index out of bounds
+2021-10-08 02:07:03 [main] [main] [39] INFO  com.alex.firsttask.Main - [-12, 22, -32, 25, 78, 9, 3, 4, -5, 67, -898]
+2021-10-08 02:07:03 [main] [main] [42] INFO  com.alex.firsttask.Main - -898
+2021-10-08 02:07:03 [main] [main] [44] INFO  com.alex.firsttask.Main - 78
+2021-10-08 02:07:03 [main] [main] [46] INFO  com.alex.firsttask.Main - -67.181816
+2021-10-08 02:07:03 [main] [main] [48] INFO  com.alex.firsttask.Main - [12, 22, 32, 25, 78, 9, 3, 4, 5, 67, 898]
+2021-10-08 02:07:03 [main] [main] [50] INFO  com.alex.firsttask.Main - -739
+2021-10-08 02:07:03 [main] [main] [52] INFO  com.alex.firsttask.Main - 7
+2021-10-08 02:07:03 [main] [main] [54] INFO  com.alex.firsttask.Main - 4
+2021-10-08 02:07:03 [main] [main] [60] INFO  com.alex.firsttask.Main - [-898, -32, -12, -5, 3, 4, 9, 22, 25, 67, 78]
+2021-10-08 02:07:03 [main] [main] [62] INFO  com.alex.firsttask.Main - [-898, -32, -12, -5, 3, 4, 9, 22, 25, 67, 78]
+2021-10-08 02:07:03 [main] [main] [64] INFO  com.alex.firsttask.Main - [-898, -32, -12, -5, 3, 4, 9, 22, 25, 67, 78]
+2021-10-08 02:07:03 [main] [main] [67] INFO  com.alex.firsttask.Main - 67
+2021-10-08 02:07:03 [main] [main] [77] ERROR com.alex.firsttask.Main - Index out of bounds

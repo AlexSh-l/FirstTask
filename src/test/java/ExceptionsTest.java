@@ -1,9 +1,9 @@
-import com.alex.entity.NumbersArray;
-import com.alex.exceptions.ArrayIndexException;
+import com.alex.firsttask.entities.NumbersArray;
+import com.alex.firsttask.exceptions.ArrayIndexException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ArrayIndexExceptionTest {
+public class ExceptionsTest {
 
     static NumbersArray numbersArray;
 
@@ -14,7 +14,7 @@ public class ArrayIndexExceptionTest {
     }
 
     @Test(expected = ArrayIndexException.class)
-    public void arrayIndexExceptionTest() throws ArrayIndexException{
+    public void arrayIndexExceptionTest() throws ArrayIndexException {
         numbersArray.getElementById(20);
     }
 

@@ -1,11 +1,16 @@
-import com.alex.entity.NumbersArray;
-import com.alex.exceptions.ArrayIndexException;
-import com.alex.filereader.NumbersReader;
-import com.alex.service.implementation.*;
-import com.alex.sorts.ArraySorter;
-import com.alex.validator.Validation;
+package com.alex.firsttask;
+
+import com.alex.firsttask.entities.NumbersArray;
+import com.alex.firsttask.exceptions.ArrayIndexException;
+import com.alex.firsttask.exceptions.DataParserException;
+import com.alex.firsttask.exceptions.FileReaderException;
+import com.alex.firsttask.filereaders.NumbersReader;
+import com.alex.firsttask.parsers.DataParser;
+import com.alex.firsttask.services.implementations.ArrayServices;
+import com.alex.firsttask.sorts.ArraySorter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,22 +20,32 @@ public class Main {
 
     public static void main(String[] args) {
         NumbersReader numbersReader = new NumbersReader();
-        List<String> numbersRead = numbersReader.readNumbers();
-        Validation validation = new Validation();
-        int[] numbersList = validation.validateArray(numbersRead);
+        List<String> numbersRead = new ArrayList<>();
+        try {
+            numbersRead = numbersReader.readNumbers();
+        } catch (FileReaderException e) {
+            logger.error(e.getMessage());
+        }
+        DataParser dataParser = new DataParser();
+        int[] numbersList = new int[0];
+        try {
+            numbersList = dataParser.parseData(numbersRead);
+        } catch (DataParserException e) {
+            logger.error(e.getMessage());
+        }
         NumbersArray numbersArray = new NumbersArray();
         int[] array = numbersArray.numbersArrayNewInstance(numbersList);
         logger.info(numbersArray.toString());
         ArrayServices arrayServices = new ArrayServices();
-        int minimumValue = arrayServices.getMinimumValue(array);
+        int minimumValue = arrayServices.findMinimumValue(array);
         logger.info(minimumValue);
-        int maximumValue = arrayServices.getMaximumValue(array);
+        int maximumValue = arrayServices.findMaximumValue(array);
         logger.info(maximumValue);
-        float averageValue = arrayServices.getAverageValue(array);
+        float averageValue = arrayServices.countAverageValue(array);
         logger.info(averageValue);
         int[] invertedArray = arrayServices.invertNegativeValues(array);
         logger.info(Arrays.toString(invertedArray));
-        int summary = arrayServices.getSummary(array);
+        int summary = arrayServices.countSummary(array);
         logger.info(summary);
         int numberOfPositives = arrayServices.countPositives(array);
         logger.info(numberOfPositives);

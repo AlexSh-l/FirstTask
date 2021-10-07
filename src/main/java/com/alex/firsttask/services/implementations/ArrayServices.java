@@ -1,10 +1,10 @@
-package com.alex.service.implementation;
+package com.alex.firsttask.services.implementations;
 
-import com.alex.service.IArrayServices;
+import com.alex.firsttask.services.IArrayServices;
 
 public class ArrayServices implements IArrayServices {
     @Override
-    public float getAverageValue(int[] array) {
+    public float countAverageValue(int[] array) {
         int summary = 0;
         for(int i = 0; i < array.length; i++){
             summary+=array[i];
@@ -13,7 +13,7 @@ public class ArrayServices implements IArrayServices {
     }
 
     @Override
-    public int getMaximumValue(int[] array) {
+    public int findMaximumValue(int[] array) {
         int maximumValue = array[0];
         for(int i=1; i < array.length; i++){
             if(maximumValue < array[i]){
@@ -24,7 +24,7 @@ public class ArrayServices implements IArrayServices {
     }
 
     @Override
-    public int getMinimumValue(int[] array) {
+    public int findMinimumValue(int[] array) {
         int minimumValue = array[0];
         for(int i=1; i < array.length; i++){
             if(minimumValue > array[i]){
@@ -71,7 +71,7 @@ public class ArrayServices implements IArrayServices {
     }
 
     @Override
-    public int getSummary(int[] array) {
+    public int countSummary(int[] array) {
         int summary = 0;
         for(int i = 0; i < array.length; i++){
             summary+=array[i];

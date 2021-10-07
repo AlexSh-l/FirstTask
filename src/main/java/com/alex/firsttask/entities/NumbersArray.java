@@ -1,7 +1,7 @@
-package com.alex.entity;
+package com.alex.firsttask.entities;
 
-import com.alex.exceptions.ArrayIndexException;
-import com.alex.validator.Validation;
+import com.alex.firsttask.exceptions.ArrayIndexException;
+import com.alex.firsttask.validators.Validation;
 
 import java.util.Arrays;
 
@@ -35,7 +35,7 @@ public class NumbersArray {
             return array[index];
         }
         else {
-            throw new ArrayIndexException("Index out of bounds", index);
+            throw new ArrayIndexException("Index out of bounds");
         }
     }
 

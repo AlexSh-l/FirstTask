@@ -1,4 +1,4 @@
-package com.alex.constants;
+package com.alex.firsttask.constants;
 
 public class Constants {
 

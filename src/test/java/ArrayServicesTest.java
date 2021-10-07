@@ -1,5 +1,5 @@
-import com.alex.entity.NumbersArray;
-import com.alex.service.implementation.ArrayServices;
+import com.alex.firsttask.entities.NumbersArray;
+import com.alex.firsttask.services.implementations.ArrayServices;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,23 +17,23 @@ public class ArrayServicesTest {
     }
 
     @Test
-    public void getAverageValueTest(){
+    public void countAverageValueTest(){
         float expected = 15.0f;
-        float actual = arrayServices.getAverageValue(array);
+        float actual = arrayServices.countAverageValue(array);
         Assert.assertEquals(expected,actual,0.001);
     }
 
     @Test
-    public void maximumValueTest(){
+    public void findMaximumValueTest(){
         int expected = 78;
-        int actual = arrayServices.getMaximumValue(array);
+        int actual = arrayServices.findMaximumValue(array);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getMinimumValueTest(){
+    public void findMinimumValueTest(){
         int expected = -32;
-        int actual = arrayServices.getMinimumValue(array);
+        int actual = arrayServices.findMinimumValue(array);
         Assert.assertEquals(expected, actual);
     }
 
@@ -59,9 +59,9 @@ public class ArrayServicesTest {
     }
 
     @Test
-    public void getSummaryTest(){
+    public void countSummaryTest(){
         int expected = 90;
-        int actual = arrayServices.getSummary(array);
+        int actual = arrayServices.countSummary(array);
         Assert.assertEquals(expected, actual);
     }
 

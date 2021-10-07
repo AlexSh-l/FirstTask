@@ -1,31 +1,24 @@
-package com.alex.validator;
+package com.alex.firsttask.parsers;
 
-import com.alex.constants.Constants;
+import com.alex.firsttask.exceptions.DataParserException;
+import com.alex.firsttask.validators.Validation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class Validation {
+public class DataParser {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public boolean indexCheck(int[] array, int index){
-        return (index >= 0) && (index <= array.length);
-    }
-
-    public int[] validateArray(List<String> fileText){
+    public int[] parseData(List<String> fileText) throws DataParserException {
         ArrayList<Integer> list = new ArrayList<>();
         int length = 0;
         try {
-            Pattern pattern = Pattern.compile(Constants.NUMBERS_EXPRESSION);
-            Matcher matcher;
+            Validation validation = new Validation();
             for (String line : fileText) {
-                matcher = pattern.matcher(line);
-                while (matcher.find()) {
-                    String stringNumber = matcher.group();
+                if (validation.validateArray(line)) {
+                    String stringNumber = validation.matcher.group();
                     String[] numbersString = stringNumber.split(" ");
                     for(String number:numbersString){
                         Integer integerNumber = Integer.parseInt(number);
@@ -35,8 +28,9 @@ public class Validation {
                 }
             }
         }
-        catch (NumberFormatException | NullPointerException numEx){
-            logger.error(numEx.getMessage());
+        catch (NumberFormatException | NullPointerException e){
+            logger.error(e.getMessage());
+            throw new DataParserException("Unable to parse data");
         }
         int[] resultingArray = new int[length];
         int i = 0;

@@ -1,13 +1,12 @@
 package com.alex.firsttask;
 
-import com.alex.firsttask.entities.NumbersArray;
-import com.alex.firsttask.exceptions.ArrayIndexException;
-import com.alex.firsttask.exceptions.DataParserException;
-import com.alex.firsttask.exceptions.FileReaderException;
-import com.alex.firsttask.filereaders.NumbersReader;
-import com.alex.firsttask.parsers.DataParser;
-import com.alex.firsttask.services.implementations.ArrayServices;
-import com.alex.firsttask.sorts.ArraySorter;
+import com.alex.firsttask.entity.NumbersArray;
+import com.alex.firsttask.exception.ArrayIndexException;
+import com.alex.firsttask.exception.FileReaderException;
+import com.alex.firsttask.filereader.implementation.CustomFileReader;
+import com.alex.firsttask.parser.implementation.DataParser;
+import com.alex.firsttask.service.implementation.ArrayService;
+import com.alex.firsttask.sort.implementation.ArraySorter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
@@ -19,48 +18,44 @@ public class Main {
     private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
-        NumbersReader numbersReader = new NumbersReader();
+        CustomFileReader customFileReader = new CustomFileReader();
         List<String> numbersRead = new ArrayList<>();
         try {
-            numbersRead = numbersReader.readNumbers();
+            if(customFileReader.readFile().isPresent()) {
+                numbersRead = customFileReader.readFile().get();
+            }
         } catch (FileReaderException e) {
             logger.error(e.getMessage());
         }
         DataParser dataParser = new DataParser();
-        int[] numbersList = new int[0];
-        try {
-            numbersList = dataParser.parseData(numbersRead);
-        } catch (DataParserException e) {
-            logger.error(e.getMessage());
-        }
+        int[] numbersList = dataParser.parseData(numbersRead);
         NumbersArray numbersArray = new NumbersArray();
-        int[] array = numbersArray.numbersArrayNewInstance(numbersList);
+        numbersArray.setArray(numbersList);
         logger.info(numbersArray.toString());
-        ArrayServices arrayServices = new ArrayServices();
-        int minimumValue = arrayServices.findMinimumValue(array);
+        ArrayService arrayService = new ArrayService();
+        int minimumValue = arrayService.findMinimumValue(numbersArray);
         logger.info(minimumValue);
-        int maximumValue = arrayServices.findMaximumValue(array);
+        int maximumValue = arrayService.findMaximumValue(numbersArray);
         logger.info(maximumValue);
-        float averageValue = arrayServices.countAverageValue(array);
+        float averageValue = arrayService.countAverageValue(numbersArray);
         logger.info(averageValue);
-        int[] invertedArray = arrayServices.invertNegativeValues(array);
+        int[] invertedArray = arrayService.invertNegativeValues(numbersArray);
         logger.info(Arrays.toString(invertedArray));
-        int summary = arrayServices.countSummary(array);
+        int summary = arrayService.countSummary(numbersArray);
         logger.info(summary);
-        int numberOfPositives = arrayServices.countPositives(array);
+        int numberOfPositives = arrayService.countPositives(numbersArray);
         logger.info(numberOfPositives);
-        int numberOfNegatives = arrayServices.countNegatives(array);
+        int numberOfNegatives = arrayService.countNegatives(numbersArray);
         logger.info(numberOfNegatives);
         ArraySorter arraySorter = new ArraySorter();
-        int[] bubbleArray = Arrays.copyOf(array,array.length);
-        int[] selectionArray = Arrays.copyOf(array,array.length);
-        int[] insertionArray = Arrays.copyOf(array,array.length);
-        arraySorter.bubbleSort(bubbleArray);
+        int[] bubbleArray = arraySorter.bubbleSort(numbersArray);
         logger.info(Arrays.toString(bubbleArray));
-        arraySorter.selectionSort(selectionArray);
+        int[] selectionArray = arraySorter.selectionSort(numbersArray);
         logger.info(Arrays.toString(selectionArray));
-        arraySorter.insertionSort(insertionArray);
+        int[] insertionArray = arraySorter.insertionSort(numbersArray);
         logger.info(Arrays.toString(insertionArray));
+        int[] streamSortedArray = arraySorter.streamSorter(numbersArray);
+        logger.info(Arrays.toString(streamSortedArray));
         try {
             int ninthElement = numbersArray.getElementById(9);
             logger.info(ninthElement);

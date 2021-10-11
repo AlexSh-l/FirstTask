@@ -1,67 +1,67 @@
-import com.alex.firsttask.entities.NumbersArray;
-import com.alex.firsttask.services.implementations.ArrayServices;
+import com.alex.firsttask.entity.NumbersArray;
+import com.alex.firsttask.service.implementation.ArrayService;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ArrayServicesTest {
+public class ArrayServiceTest {
 
-    static int[] array;
-    static ArrayServices arrayServices;
+    private static NumbersArray numbersArray;
+    private static ArrayService arrayService;
 
     @BeforeClass
     public static void initializeArray(){
-        NumbersArray numbersArray = new NumbersArray();
-        array = numbersArray.numbersArrayNewInstance(-12,22,-32,25,78,9);
-        arrayServices = new ArrayServices();
+        numbersArray = new NumbersArray();
+        numbersArray.setArray(-12,22,-32,25,78,9);
+        arrayService = new ArrayService();
     }
 
     @Test
     public void countAverageValueTest(){
         float expected = 15.0f;
-        float actual = arrayServices.countAverageValue(array);
+        float actual = arrayService.countAverageValue(numbersArray);
         Assert.assertEquals(expected,actual,0.001);
     }
 
     @Test
     public void findMaximumValueTest(){
         int expected = 78;
-        int actual = arrayServices.findMaximumValue(array);
+        int actual = arrayService.findMaximumValue(numbersArray);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void findMinimumValueTest(){
         int expected = -32;
-        int actual = arrayServices.findMinimumValue(array);
+        int actual = arrayService.findMinimumValue(numbersArray);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void invertNegativeValuesTest(){
         int[] expected = new int[] {12,22,32,25,78,9};
-        int[] actual = arrayServices.invertNegativeValues(array);
+        int[] actual = arrayService.invertNegativeValues(numbersArray);
         Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void countNegativesTest(){
         int expected = 2;
-        int actual = arrayServices.countNegatives(array);
+        int actual = arrayService.countNegatives(numbersArray);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void countPositivesTest(){
         int expected = 4;
-        int actual = arrayServices.countPositives(array);
+        int actual = arrayService.countPositives(numbersArray);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void countSummaryTest(){
         int expected = 90;
-        int actual = arrayServices.countSummary(array);
+        int actual = arrayService.countSummary(numbersArray);
         Assert.assertEquals(expected, actual);
     }
 

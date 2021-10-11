@@ -1,42 +1,44 @@
-package com.alex.firsttask.entities;
+package com.alex.firsttask.entity;
 
-import com.alex.firsttask.exceptions.ArrayIndexException;
-import com.alex.firsttask.validators.Validation;
-
+import com.alex.firsttask.exception.ArrayIndexException;
 import java.util.Arrays;
 
 public class NumbersArray {
 
-    private static final Validation validation = new Validation();
-
     private int[] array;
 
-    public int[] numbersArrayNewInstance(int length){
-        array = new int[length];
-        return array;
+    public void setArray(int length){
+        this.array = new int[length];
     }
 
-    public int[] numbersArrayNewInstance(int... values){
-        array = new int[values.length];
+    public void setArray(int... values){
+        this.array = new int[values.length];
         int i = 0;
         for(int value:values){
-            array[i] = value;
+            this.array[i] = value;
             i++;
         }
-        return array;
     }
 
     public int getLength(){
         return array.length;
     }
 
+    public int[] getArray() {
+        return array;
+    }
+
     public int getElementById(int index) throws ArrayIndexException {
-        if(validation.indexCheck(array, index)) {
+        if(indexCheck(index)) {
             return array[index];
         }
         else {
             throw new ArrayIndexException("Index out of bounds");
         }
+    }
+
+    public boolean indexCheck(int index){
+        return (index >= 0) && (index <= array.length);
     }
 
     @Override
